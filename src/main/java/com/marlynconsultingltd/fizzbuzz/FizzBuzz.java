@@ -8,7 +8,7 @@ import com.marlynconsultingltd.fizzbuzz.validation.ParameterValidator;
  */
 public class FizzBuzz {
     public Parameters validateParameters(final ParameterValidator validator,
-                                   final String... args) {
+                                         final String... args) {
         return validator.validateAndAssignParameters(args);
     }
 
