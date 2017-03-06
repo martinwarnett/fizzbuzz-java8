@@ -15,7 +15,7 @@
         <junit.version>5.0.0-M3</junit.version>
         <junit.runner.version>1.0.0-M3</junit.runner.version>
         <surefire.version>2.19.1</surefire.version>
-        <surefire.provider.version>1.0.0-M2</surefire.provider.version>
+        <surefire.provider.version>1.0.0-M3</surefire.provider.version>
     </properties>
 
     <build>
