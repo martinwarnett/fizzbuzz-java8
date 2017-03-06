@@ -1,5 +1,8 @@
 package com.marlynconsultingltd.fizzbuzz.validation;
 
+import com.marlynconsultingltd.fizzbuzz.Parameters;
+import java.util.Optional;
+
 /**
  *
  * @author martinwarnett
@@ -7,14 +10,15 @@ package com.marlynconsultingltd.fizzbuzz.validation;
 public final class ParameterValidator {
 
     private static final String POSITIVE_INTEGERS_REQUIRED = "The start and end parameters must be positive numeric integers - start was '%s' and end was '%s'";
-    private static final String END_PARAMETER_SMALLER_THAN_START = "The end parameter cannot be smaller than the start parameter - start was %d and end was %d";
+    private static final String END_PARAMETER_NOT_GREATER_THAN_START = "The start parameter must be greater than the parameter - start was '%d' and end was '%d'";
     private static final String TWO_PARAMETERS_REQUIRED = "The application expects two parameters, start and end, to be provided. Number of parameters supplied was %d";
     private static final String NO_PARAMETERS = "The application expects two parameters, start and end, to be provided. No parameters were provided";
 
-    public void validate(final String[] args) {
+    public Parameters validateAndAssignParameters(final String[] args) {
+        Parameters parameters = null;
+        
         if (null == args || args.length == 0) {
-            throw new IllegalArgumentException(
-                    NO_PARAMETERS);
+            throw new IllegalArgumentException(NO_PARAMETERS);
         }
 
         if (args.length != 2) {
@@ -31,13 +35,17 @@ public final class ParameterValidator {
                         String.format(POSITIVE_INTEGERS_REQUIRED, start, end));
             }
             
-            if (end < start) {
+            if (end <= start) {
                 throw new IllegalArgumentException(
-                        String.format(END_PARAMETER_SMALLER_THAN_START, start, end));
+                        String.format(END_PARAMETER_NOT_GREATER_THAN_START, start, end));
             }
+            
+            parameters = new Parameters(start, end);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(
                     String.format(POSITIVE_INTEGERS_REQUIRED, args[0], args[1]), e);
         }
+        
+        return parameters;
     }
 }
