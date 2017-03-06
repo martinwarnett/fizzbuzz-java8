@@ -1,18 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.marlynconsultingltd.fizzbuzz;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 
@@ -20,7 +12,7 @@ import org.junit.runner.RunWith;
  *
  * @author martinwarnett
  */
-@DisplayName("ParametersValidator tests")
+@DisplayName("Parameters tests")
 @RunWith(JUnitPlatform.class)
 public final class ParametersTest {
     private static final int START = 67;
@@ -42,6 +34,6 @@ public final class ParametersTest {
     @DisplayName("End parameter should be unaltered")
     @Test
     public void checkEndParameterUnaltered() {
-        assertEquals(END, testSubject.getStart());
+        assertEquals(END, testSubject.getEnd());
     }
 }
