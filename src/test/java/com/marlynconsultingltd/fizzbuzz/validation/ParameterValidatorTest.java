@@ -1,5 +1,6 @@
 package com.marlynconsultingltd.fizzbuzz.validation;
 
+import com.marlynconsultingltd.fizzbuzz.Parameters;
 import com.marlynconsultingltd.fizzbuzz.validation.ParameterValidator;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -142,7 +143,9 @@ public final class ParameterValidatorTest {
     @Test
     public void exceptionNotThrownUponValidParameters() {
         try {
-            testSubject.validateAndAssignParameters(new String[]{"1", "2"});
+            final Parameters parameters = testSubject.validateAndAssignParameters(new String[]{"1", "2"});
+            assertEquals(1, parameters.getStart());
+            assertEquals(2, parameters.getEnd());
         } catch (Exception e) {
             fail("No exception should be thrown");
         }
