@@ -61,7 +61,7 @@ public final class ParameterValidatorTest {
     public void expectExceptionWhenStartParameterIsCharacter() {
         final Throwable exception = assertThrows(IllegalArgumentException.class,
                      () -> testSubject.validateAndAssignParameters(new String[]{"abc", "2"}));
-        assertEquals("The start and end parameters must be positive numeric integers - start was 'abc' and end was '2'", 
+        assertEquals("The start and end parameters must be numeric integers - start was 'abc' and end was '2'", 
                      exception.getMessage());
     }
 
@@ -70,31 +70,17 @@ public final class ParameterValidatorTest {
     public void expectExceptionWhenStartParameterIsNotInteger() {
         final Throwable exception = assertThrows(IllegalArgumentException.class,
                      () -> testSubject.validateAndAssignParameters(new String[]{"1.1", "2"}));
-        assertEquals("The start and end parameters must be positive numeric integers - start was '1.1' and end was '2'", 
+        assertEquals("The start and end parameters must be numeric integers - start was '1.1' and end was '2'", 
                      exception.getMessage());
     }
 
-
-    @DisplayName("An exception should be thrown when start parameter is zero or negative")
-    @Test
-    public void expectExceptionWhenStartParameterIsZeroOrNegative() {
-        final Throwable zeroException = assertThrows(IllegalArgumentException.class,
-                     () -> testSubject.validateAndAssignParameters(new String[]{"0", "6"}));
-        assertEquals("The start and end parameters must be positive numeric integers - start was '0' and end was '6'", 
-                     zeroException.getMessage());
-
-        final Throwable negativeException = assertThrows(IllegalArgumentException.class,
-                     () -> testSubject.validateAndAssignParameters(new String[]{"-1", "7"}));
-        assertEquals("The start and end parameters must be positive numeric integers - start was '-1' and end was '7'", 
-                     negativeException.getMessage());
-    }
     
     @DisplayName("An exception should be thrown when end parameter is non-numeric")
     @Test
     public void expectExceptionWhenEndParameterIsCharacter() {
         final Throwable exception = assertThrows(IllegalArgumentException.class,
                      () -> testSubject.validateAndAssignParameters(new String[]{"3", "xyz"}));
-        assertEquals("The start and end parameters must be positive numeric integers - start was '3' and end was 'xyz'", 
+        assertEquals("The start and end parameters must be numeric integers - start was '3' and end was 'xyz'", 
                      exception.getMessage());
     }
 
@@ -103,23 +89,10 @@ public final class ParameterValidatorTest {
     public void expectExceptionWhenEndParameterIsNotInteger() {
         final Throwable exception = assertThrows(IllegalArgumentException.class,
                      () -> testSubject.validateAndAssignParameters(new String[]{"4", "5.1"}));
-        assertEquals("The start and end parameters must be positive numeric integers - start was '4' and end was '5.1'", 
+        assertEquals("The start and end parameters must be numeric integers - start was '4' and end was '5.1'", 
                      exception.getMessage());
     }
 
-    @DisplayName("An exception should be thrown when end parameter is zero or negative")
-    @Test
-    public void expectExceptionWhenEndParameterIsZeroOrNegative() {
-        final Throwable zeroException = assertThrows(IllegalArgumentException.class,
-                     () -> testSubject.validateAndAssignParameters(new String[]{"8", "0"}));
-        assertEquals("The start and end parameters must be positive numeric integers - start was '8' and end was '0'", 
-                     zeroException.getMessage());
-
-        final Throwable negativeException = assertThrows(IllegalArgumentException.class,
-                     () -> testSubject.validateAndAssignParameters(new String[]{"9", "-2"}));
-        assertEquals("The start and end parameters must be positive numeric integers - start was '9' and end was '-2'", 
-                     negativeException.getMessage());
-    }
 
     @DisplayName("An exception should be thrown when end parameter smaller than start parameter")
     @Test

@@ -9,7 +9,7 @@ import java.util.Optional;
  */
 public final class ParameterValidator {
 
-    private static final String POSITIVE_INTEGERS_REQUIRED = "The start and end parameters must be positive numeric integers - start was '%s' and end was '%s'";
+    private static final String INTEGERS_REQUIRED = "The start and end parameters must be numeric integers - start was '%s' and end was '%s'";
     private static final String END_PARAMETER_NOT_GREATER_THAN_START = "The start parameter must be greater than the parameter - start was '%d' and end was '%d'";
     private static final String TWO_PARAMETERS_REQUIRED = "The application expects two parameters, start and end, to be provided. Number of parameters supplied was %d";
     private static final String NO_PARAMETERS = "The application expects two parameters, start and end, to be provided. No parameters were provided";
@@ -30,11 +30,6 @@ public final class ParameterValidator {
             int start = Integer.parseInt(args[0]);
             int end = Integer.parseInt(args[1]);
 
-            if (start <= 0 || end <= 0) {
-                throw new IllegalArgumentException(
-                        String.format(POSITIVE_INTEGERS_REQUIRED, start, end));
-            }
-            
             if (end <= start) {
                 throw new IllegalArgumentException(
                         String.format(END_PARAMETER_NOT_GREATER_THAN_START, start, end));
@@ -43,7 +38,7 @@ public final class ParameterValidator {
             parameters = new Parameters(start, end);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(
-                    String.format(POSITIVE_INTEGERS_REQUIRED, args[0], args[1]), e);
+                    String.format(INTEGERS_REQUIRED, args[0], args[1]), e);
         }
         
         return parameters;
