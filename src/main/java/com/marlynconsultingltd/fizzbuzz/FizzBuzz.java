@@ -26,10 +26,10 @@ public class FizzBuzz {
         text.append(String.format("%d : ", number));
         
         String result = "";
-        if (number != 0 && number % 3 == 0) {
+        if (isFizz(number)) {
             result = "Fizz";
         }
-        if (number != 0 && number % 5 == 0) {
+        if (isBuzz(number)) {
             result += "Buzz";
         }
         if ("".equals(result)) {
@@ -37,6 +37,14 @@ public class FizzBuzz {
         }
         
         text.append(String.format("%s\n", result));
+    }
+
+    private static boolean isBuzz(final int number) {
+        return number != 0 && number % 5 == 0;
+    }
+
+    private static boolean isFizz(final int number) {
+        return number != 0 && number % 3 == 0;
     }
 
     public static void main(String... args) {
