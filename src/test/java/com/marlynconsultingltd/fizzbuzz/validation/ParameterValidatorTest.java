@@ -1,10 +1,8 @@
 package com.marlynconsultingltd.fizzbuzz.validation;
 
 import com.marlynconsultingltd.fizzbuzz.Parameters;
-import com.marlynconsultingltd.fizzbuzz.validation.ParameterValidator;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
